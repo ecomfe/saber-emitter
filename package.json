@@ -1,0 +1,12 @@
+{
+    "name": "saber-emitter",
+    "version": "0.0.1",
+    "description": "一个适用于移动端的事件发射器。",
+    "main": "emitter",
+    "maintainers": [
+        { "name": "firede", "email": "firede@firede.us" }
+    ],
+    "license": "BSD",
+    "repository": "git://github.com/ecomfe/saber-emitter.git",
+    "bugs": "https://github.com/ecomfe/saber-emitter/issues"
+}
