@@ -28,18 +28,12 @@ define( function() {
      * @return {Object}
      */
     proto._getEvents = function() {
-        return this._events || ( this._events || {} );
-    };
+        if ( !this._events ) {
+            this._events = {};
+        }
 
-    /**
-     * 设置事件列表
-     * 
-     * @private
-     * @param {Object} events 事件列表
-     */
-    proto._setEvents = function( events ) {
-        this._events = events || {};
-    }
+        return this._events;
+    };
 
     /**
      * 挂载事件
@@ -54,8 +48,6 @@ define( function() {
         
         events[ event ] = events[ event ] || [];
         events[ event ].push( listener );
-
-        this._setEvents( events );
 
         return this;
     };
