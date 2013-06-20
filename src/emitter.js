@@ -128,6 +128,7 @@ define( function() {
         var args = Array.prototype.slice.call( arguments, 1 );
 
         if ( listeners ) {
+            listeners = listeners.slice( 0 );
             for ( var i = 0, len = listeners.length; i < len; i++ ) {
                 listeners[ i ].apply( this, args );
             }
