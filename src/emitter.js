@@ -78,8 +78,8 @@ define( function() {
     /**
      * 注销事件与监听器
      * 任何参数都`不传`将注销当前实例的所有事件
-     * 只传入`事件名`将注销该事件下挂载的所有监听器
-     * 传入`事件名`与`监听器`将只注销该监听器
+     * 只传入`event`将注销该事件下挂载的所有监听器
+     * 传入`event`与`listener`将只注销该监听器
      * 
      * @public
      * @param {string} event 事件名
@@ -115,7 +115,7 @@ define( function() {
     };
 
     /**
-     * 触发事件（发射信号）
+     * 触发事件
      * 
      * @public
      * @param {string} event 事件名
