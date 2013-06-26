@@ -40,14 +40,19 @@ var emitter = new Emitter;
 挂载事件。
 
 ```javascript
-emitter.on( 'say', function( name ) {
+function listenerFn( name ) {
     console.log( 'Hello ' + name );
-});
+}
+emitter.on( 'say', listenerFn );
 ```
 
 ### Emitter#once( event, listener )
 
 挂载只执行一次的事件。
+
+```javascript
+emitter.once( 'say', listenerFn );
+```
 
 ### Emitter#off( event, listener )
 
