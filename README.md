@@ -31,15 +31,19 @@ API
 
 创建`Emitter`实例。
 
-    var emitter = new Emitter;
+```javascript
+var emitter = new Emitter;
+```
 
 ### Emitter#on( event, listener )
 
 挂载事件。
 
-    emitter.on( 'say', function( name ) {
-        console.log( 'Hello ' + name );
-    });
+```javascript
+emitter.on( 'say', function( name ) {
+    console.log( 'Hello ' + name );
+});
+```
 
 ### Emitter#once( event, listener )
 
@@ -53,20 +57,25 @@ API
 * 只传入`event`将注销该事件下挂载的所有监听器
 * 传入`event`与`listener`将只注销该监听器
 
-    emitter.off();
-    emitter.off( 'say' );
-    emitter.off( 'say', listenerFn );
+```javascript
+emitter.off();
+emitter.off( 'say' );
+emitter.off( 'say', listenerFn );
+```
 
 ### Emitter#emit( event, args... )
 
 触发事件。
 
-    emitter.emit( 'say' );
-    emitter.emit( 'say', 'hello' );
+```javascript
+emitter.emit( 'say' );
+emitter.emit( 'say', 'hello' );
+```
 
 ### Emitter#listeners( event )
 
 返回指定事件的监听器列表。
 
-    var listeners = emitter.listeners( 'say' );
-
+```javascript
+var listeners = emitter.listeners( 'say' );
+```
