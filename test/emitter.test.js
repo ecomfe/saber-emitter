@@ -201,4 +201,21 @@ define(function() {
         });
 
     });
+
+    describe( 'Emitter.mixin( obj )', function() {
+        it( 'should mixin', function() {
+            var done = false;
+            var emitter = {};
+            Emitter.mixin( emitter );
+
+            emitter.on('foo', function() {
+                done = true;
+            });
+            emitter.emit('foo');
+
+            expect( done ).toBe( true );
+        });
+    });
+
+
 });

@@ -35,6 +35,17 @@ API
 var emitter = new Emitter;
 ```
 
+### Emitter.mixin( obj )
+
+通过`mixin`将`Emitter`混入目标对象。
+
+```javascript
+var obj = {};
+Emitter.mixin( obj );
+
+obj.emit( 'foo' );
+```
+
 ### Emitter#on( event, listener )
 
 挂载事件。

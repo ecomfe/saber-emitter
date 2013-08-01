@@ -149,6 +149,19 @@ define( function() {
         return events[ event ] || [];
     };
 
+    /**
+     * 将Emitter混入目标对象
+     * 
+     * @param {Object} obj 目标对象
+     * @return {Object} 混入Emitter后的对象
+     */
+    Emitter.mixin = function( obj ) {
+        for ( var key in Emitter.prototype ) {
+            obj[ key ] = Emitter.prototype[ key ];
+        }
+        return obj;
+    };
+
     return Emitter;
 
 });
