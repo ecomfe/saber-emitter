@@ -36,6 +36,21 @@ define( function() {
     };
 
     /**
+     * 获取最大监听器个数
+     * 若尚未设置，则初始化最大个数为10
+     * 
+     * @private
+     * @return {number}
+     */
+    proto._getMaxListeners = function() {
+        if ( isNaN(this.maxListeners) ) {
+            this.maxListeners = 10;
+        }
+
+        return this.maxListeners;
+    };
+
+    /**
      * 挂载事件
      * 
      * @public
@@ -45,8 +60,20 @@ define( function() {
      */
     proto.on = function( event, listener ) {
         var events = this._getEvents();
+        var maxListeners = this._getMaxListeners();
         
         events[ event ] = events[ event ] || [];
+
+        var currentListeners = events[ event ].length;
+        if ( currentListeners >= maxListeners && maxListeners !== 0 ) {
+            throw new RangeError(
+                'Warning: possible Emitter'
+                + ' memory leak detected. '
+                + currentListeners
+                + ' listeners added.'
+            );
+        }
+
         events[ event ].push( listener );
 
         return this;
@@ -147,6 +174,18 @@ define( function() {
     proto.listeners = function( event ) {
         var events = this._getEvents();
         return events[ event ] || [];
+    };
+
+    /**
+     * 设置监听器的最大个数，为0时不限制
+     * 
+     * @param {number} number 监听器个数
+     * @return {Emitter}
+     */
+    proto.setMaxListeners = function( number ) {
+        this.maxListeners = number;
+
+        return this;
     };
 
     /**
