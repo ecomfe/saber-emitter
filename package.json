@@ -1,6 +1,6 @@
 {
     "name": "saber-emitter",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "一个适用于移动端的事件发射器。",
     "main": "emitter",
     "maintainers": [
