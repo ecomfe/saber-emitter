@@ -95,3 +95,11 @@ emitter.emit( 'say', 'hello' );
 ```javascript
 var listeners = emitter.listeners( 'say' );
 ```
+
+### Emitter#setMaxListeners( number )
+
+设置每个事件下，监听器的最大个数。为 `0` 时不限制，默认值是 `10` 。
+
+```javascript
+emitter.setMaxListeners( 8 );
+```

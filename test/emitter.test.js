@@ -25,9 +25,9 @@ define(function() {
         });
     });
 
-    describe( "Emitter", function() {
+    describe( 'Emitter', function() {
 
-        describe( ".on( event, listener )", function() {
+        describe( '.on( event, listener )', function() {
             it( 'should add listeners', function() {
                 var emitter = new Emitter;
                 var result = [];
@@ -48,9 +48,30 @@ define(function() {
                     [ 'one', 'test', 'two', 'test', 'one', 1, 'two', 1 ]
                 );
             });
+
+            it( '.setMaxListeners( number )', function() {
+                var done = false;
+                var emitter = new Emitter;
+                emitter.setMaxListeners( 2 );
+
+                emitter.on( 'baz', function() { console.log( 'a' ) });
+                emitter.on( 'baz', function() { console.log( 'b' ) });
+
+                try {
+                    emitter.on( 'baz', function() { console.log( 'c' ) });
+                }
+                catch ( e ) {
+                    if ( e.name === 'RangeError' ) {
+                        done = true;
+                    }
+                }
+
+                expect( done ).toBe( true );
+            });
+
         });
 
-        describe( ".once( event, listener )", function() {
+        describe( '.once( event, listener )', function() {
             it( 'should add a single-shot listener', function() {
                 var emitter = new Emitter;
                 var result = [];
