@@ -103,3 +103,9 @@ var listeners = emitter.listeners( 'say' );
 ```javascript
 emitter.setMaxListeners( 8 );
 ```
+
+Notice
+---
+
+`saber-emitter` 是为 **移动端** 环境设计的。
+如需在 **PC端** 使用，需要重新实现 `Emitter#off` 中的 `indexOf`；在 IE6/7/8 中，不支持 `Array#indexOf`，请[参考MSDN](http://msdn.microsoft.com/zh-cn/library/ff679977(v=vs.94).aspx)。
