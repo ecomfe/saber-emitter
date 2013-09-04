@@ -8,7 +8,7 @@ define(function() {
         function Custom() {
             Emitter.call( this );
         }
-        Custom.prototype.__proto__ = Emitter.prototype;
+        Emitter.mixin( Custom.prototype );
 
         describe( 'with Emitter.call( this )', function() {
             it( 'should work', function() {
