@@ -104,8 +104,16 @@ var listeners = emitter.listeners( 'say' );
 emitter.setMaxListeners( 8 );
 ```
 
-Notice
+Browser Support
 ---
+
+已测试通过的浏览器：
+
+* iOS Safari: 5.0, 5.1, 6.0, 6.1, 7.0
+* Android Browser: 2.2, 2.3.3, 4.1
+* IE Mobile: 10
+
+注：
 
 `saber-emitter` 是为 **移动端** 环境设计的。
 如需在 **PC端** 使用，需要重新实现 `Emitter#off` 中的 `indexOf`；在 IE6/7/8 中，不支持 `Array#indexOf`，请[参考MSDN](http://msdn.microsoft.com/zh-cn/library/ff679977\(v=vs.94\).aspx)。
