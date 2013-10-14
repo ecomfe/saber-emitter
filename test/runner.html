@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="http://firede.github.io/saber-static/jasmine/1.3.1/jasmine.css">
         <script src="http://firede.github.io/saber-static/jasmine/1.3.1/jasmine.js"></script>
         <script src="http://firede.github.io/saber-static/jasmine/1.3.1/jasmine-html.js"></script>
-        <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-4-2/esl.js"></script>
+        <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-6/esl.js"></script>
     </head>
     <body>
         <script>
@@ -31,7 +31,7 @@
                 return htmlReporter.specFilter(spec);
             };
 
-            require( [ './emitter.test' ], function() {
+            require( [ 'emitter.test' ], function() {
                 jasmineEnv.execute();
             });
         })();
