@@ -12,7 +12,7 @@ define(function() {
 
         describe( 'with Emitter.call( this )', function() {
             it( 'should work', function() {
-                var emitter = new Custom;
+                var emitter = new Custom();
                 var done = false;
 
                 emitter.on('foo', function() {
@@ -29,7 +29,7 @@ define(function() {
 
         describe( '.on( event, listener )', function() {
             it( 'should add listeners', function() {
-                var emitter = new Emitter;
+                var emitter = new Emitter();
                 var result = [];
 
                 emitter.on( 'foo', function( value ) {
@@ -51,14 +51,20 @@ define(function() {
 
             it( '.setMaxListeners( number )', function() {
                 var done = false;
-                var emitter = new Emitter;
+                var emitter = new Emitter();
                 emitter.setMaxListeners( 2 );
 
-                emitter.on( 'baz', function() { console.log( 'a' ) });
-                emitter.on( 'baz', function() { console.log( 'b' ) });
+                emitter.on( 'baz', function() {
+                    console.log( 'a' );
+                });
+                emitter.on( 'baz', function() {
+                    console.log( 'b' );
+                });
 
                 try {
-                    emitter.on( 'baz', function() { console.log( 'c' ) });
+                    emitter.on( 'baz', function() {
+                        console.log( 'c' );
+                    });
                 }
                 catch ( e ) {
                     if ( e.name === 'RangeError' ) {
@@ -73,7 +79,7 @@ define(function() {
 
         describe( '.once( event, listener )', function() {
             it( 'should add a single-shot listener', function() {
-                var emitter = new Emitter;
+                var emitter = new Emitter();
                 var result = [];
 
                 emitter.once( 'foo', function( value ){
@@ -91,7 +97,7 @@ define(function() {
 
         describe( '.off( event, listener )', function() {
             it( 'should remove a listener', function() {
-                var emitter = new Emitter;
+                var emitter = new Emitter();
                 var result = [];
 
                 function one() {
@@ -112,7 +118,7 @@ define(function() {
             });
 
             it( 'should work with .once()', function() {
-                var emitter = new Emitter;
+                var emitter = new Emitter();
                 var result = [];
 
                 function one() {
@@ -128,7 +134,7 @@ define(function() {
             });
 
             it( 'should work when called from an event', function() {
-                var emitter = new Emitter;
+                var emitter = new Emitter();
                 var called;
 
                 function b() {
@@ -153,7 +159,7 @@ define(function() {
 
         describe( '.off( event )', function() {
             it( 'should remove all listeners for an event', function() {
-                var emitter = new Emitter;
+                var emitter = new Emitter();
                 var result = [];
 
                 function one() {
@@ -176,7 +182,7 @@ define(function() {
 
         describe( '.off()', function() {
             it( 'should remove all listeners', function() {
-                var emitter = new Emitter;
+                var emitter = new Emitter();
                 var result = [];
 
                 function one() {
@@ -204,7 +210,7 @@ define(function() {
         describe( '.listeners( event )', function() {
             describe( 'when handlers are present', function() {
                 it( 'should return an array of callbacks', function() {
-                    var emitter = new Emitter;
+                    var emitter = new Emitter();
                     function foo() {}
                     emitter.on('foo', foo);
 
@@ -214,7 +220,7 @@ define(function() {
 
             describe( 'when no handlers are present', function() {
                 it('should return an empty array', function() {
-                    var emitter = new Emitter;
+                    var emitter = new Emitter();
                     
                     expect( emitter.listeners('foo') ).toEqual( [] );
                 });

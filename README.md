@@ -14,7 +14,7 @@ Usage
 
 ```javascript
 require( [ 'saber-emitter' ], function( Emitter ) {
-    var emitter = new Emitter;
+    var emitter = new Emitter();
 
     emitter.on( 'greeting', function( name ) {
         console.log( 'Hello, ' + name + '!' );
@@ -32,7 +32,7 @@ API
 创建`Emitter`实例。
 
 ```javascript
-var emitter = new Emitter;
+var emitter = new Emitter();
 ```
 
 ### Emitter.mixin( obj )
