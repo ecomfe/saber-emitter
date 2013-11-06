@@ -1,5 +1,4 @@
-saber-emitter
-===
+# saber-emitter
 
 一个适用于移动端的事件发射器。
 
@@ -117,3 +116,7 @@ Browser Support
 
 `saber-emitter` 是为 **移动端** 环境设计的。
 如需在 **PC端** 使用，需要重新实现 `Emitter#off` 中的 `indexOf`；在 IE6/7/8 中，不支持 `Array#indexOf`，请[参考MSDN](http://msdn.microsoft.com/zh-cn/library/ff679977\(v=vs.94\).aspx)。
+
+===
+
+[![Saber](https://f.cloud.github.com/assets/157338/1485433/aeb5c72a-4714-11e3-87ae-7ef8ae66e605.png)](http://ecomfe.github.io/saber/)
