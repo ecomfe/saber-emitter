@@ -6,7 +6,13 @@
     "maintainers": [
         { "name": "firede", "email": "firede@firede.us" }
     ],
-    "license": "BSD",
+    "scripts": {
+        "test": "./node_modules/.bin/phantomjs test/run-jasmine.js test/runner.html"
+    },
+    "devDependencies": {
+        "phantomjs": "~1.9"
+    },
+    "license": "MIT",
     "repository": "git://github.com/ecomfe/saber-emitter.git",
     "bugs": "https://github.com/ecomfe/saber-emitter/issues"
 }
