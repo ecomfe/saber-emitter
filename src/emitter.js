@@ -67,8 +67,7 @@ define( function() {
         var currentListeners = events[ event ].length;
         if ( currentListeners >= maxListeners && maxListeners !== 0 ) {
             throw new RangeError(
-                'Warning: possible Emitter'
-                + ' memory leak detected. '
+                'Warning: possible Emitter memory leak detected. '
                 + currentListeners
                 + ' listeners added.'
             );
@@ -94,8 +93,8 @@ define( function() {
             me.off( event, on );
             listener.apply( this, arguments );
         }
-        // 挂到listener上以方便删除
-        listener._off = on;
+        // 挂到on上以方便删除
+        on.listener = listener;
 
         this.on( event, on );
 
@@ -134,9 +133,13 @@ define( function() {
         }
 
         // 移除指定监听器（包括对once的处理）
-        var index = listeners.indexOf( listener._off || listener );
-        if ( index !== -1 ) {
-            listeners.splice( index, 1 );
+        var cb;
+        for ( var i = 0; i < listeners.length; i++ ) {
+            cb = listeners[ i ];
+            if ( cb === listener || cb.listener === listener ) {
+                listeners.splice(i, 1);
+                break;
+            }
         }
         return this;
     };

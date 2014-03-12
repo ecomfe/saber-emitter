@@ -126,6 +126,7 @@ define(function() {
                 }
 
                 emitter.once( 'foo', one );
+                emitter.once( 'bar', one );
                 emitter.off( 'foo', one );
 
                 emitter.emit( 'foo' );
