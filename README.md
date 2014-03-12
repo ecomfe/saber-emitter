@@ -1,4 +1,5 @@
-# saber-emitter
+saber-emitter [![Build Status](https://travis-ci.org/ecomfe/saber-emitter.png)](https://travis-ci.org/ecomfe/saber-emitter)
+===
 
 一个适用于移动端的事件发射器。
 
