@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>emitter base usage</title>
+        <title>AspectEmitter usage</title>
         <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
     </head>
     <body>
@@ -17,8 +17,8 @@
                 }
             ]
         });
-        require( [ 'saber-emitter/aop' ], function( Emitter ) {
-            emitter = new Emitter();
+        require( [ 'saber-emitter/aspect' ], function( AspectEmitter ) {
+            var emitter = new AspectEmitter();
 
             function greeting( name ) {
                 console.log( 'Hello, ' + name + '!' );
@@ -54,7 +54,9 @@
             emitter.emit( 'greeting', 'zfkun' );
 
             // remove listener and AOP
+            // you need remove AOP manually
             emitter.off( 'greeting' );
+            emitter.off( 'greeting:before' );
 
             // do nothing ( listener has been removed )
             emitter.emit( 'greeting', 'World' );
