@@ -1,6 +1,8 @@
 /**
  * @file  Aspect Emitter
- * @author  Firede[firede@firede.us]
+ * 
+ * @author  Firede[firede@firede.us],
+ *          zfkun[zfkun@msn.com]
  */
 
 define(function ( require ) {
