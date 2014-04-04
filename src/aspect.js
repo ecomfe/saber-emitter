@@ -38,7 +38,7 @@ define(function ( require ) {
 
         // 加了 :before、:after 的事件直接触发
         if ( event.match( regSuffix ) ) {
-            return Emitter.prototype.apply( event, arguments );
+            return Emitter.prototype.emit.apply( this, arguments );
         }
 
         var events = this._getEvents();

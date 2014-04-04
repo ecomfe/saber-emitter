@@ -107,6 +107,38 @@ define(function() {
             );
         });
 
+        it( 'emit :before/:after only', function () {
+            var emitter = new AspectEmitter();
+            var result = [];
+
+            emitter.on( 'foo', function ( value ) {
+                result.push( 'one', value );
+            });
+
+            emitter.on( 'foo:after', function ( value ) {
+                result.push( 'a1', value );
+            });
+
+            emitter.on( 'foo', function ( value ) {
+                result.push( 'two', value );
+            });
+
+            emitter.on( 'foo:before', function ( value ) {
+                result.push( 'b1', value );
+            });
+
+            emitter.emit( 'foo:after', 'test' );
+            emitter.emit( 'foo:before', 1 );
+            emitter.emit( 'bar', 2 );
+
+            expect( result ).toEqual(
+                [
+                    'a1', 'test',
+                    'b1', 1
+                ]
+            );
+        });
+
     });
 
 });
