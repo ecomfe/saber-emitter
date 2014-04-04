@@ -27,7 +27,9 @@ require( [ 'saber-emitter' ], function( Emitter ) {
 API
 ---
 
-### new Emitter
+### Emitter
+
+#### new Emitter
 
 创建`Emitter`实例。
 
@@ -35,7 +37,7 @@ API
 var emitter = new Emitter();
 ```
 
-### Emitter.mixin( obj )
+#### Emitter.mixin( obj )
 
 通过`mixin`将`Emitter`混入目标对象。
 
@@ -46,7 +48,7 @@ Emitter.mixin( obj );
 obj.emit( 'foo' );
 ```
 
-### Emitter#on( event, listener )
+#### Emitter#on( event, listener )
 
 挂载事件。
 
@@ -57,7 +59,7 @@ function listenerFn( name ) {
 emitter.on( 'say', listenerFn );
 ```
 
-### Emitter#once( event, listener )
+#### Emitter#once( event, listener )
 
 挂载只执行一次的事件。
 
@@ -65,7 +67,7 @@ emitter.on( 'say', listenerFn );
 emitter.once( 'say', listenerFn );
 ```
 
-### Emitter#off( event, listener )
+#### Emitter#off( event, listener )
 
 注销事件与监听器。
 
@@ -79,7 +81,7 @@ emitter.off( 'say' );
 emitter.off( 'say', listenerFn );
 ```
 
-### Emitter#emit( event, args... )
+#### Emitter#emit( event, args... )
 
 触发事件。
 
@@ -88,7 +90,7 @@ emitter.emit( 'say' );
 emitter.emit( 'say', 'hello' );
 ```
 
-### Emitter#listeners( event )
+#### Emitter#listeners( event )
 
 返回指定事件的监听器列表。
 
@@ -96,13 +98,17 @@ emitter.emit( 'say', 'hello' );
 var listeners = emitter.listeners( 'say' );
 ```
 
-### Emitter#setMaxListeners( number )
+#### Emitter#setMaxListeners( number )
 
 设置每个事件下，监听器的最大个数。为 `0` 时不限制，默认值是 `10` 。
 
 ```javascript
 emitter.setMaxListeners( 8 );
 ```
+
+### AspectEmitter
+
+提供了 `AOP` 支持的事件发射器。
 
 Browser Support
 ---
