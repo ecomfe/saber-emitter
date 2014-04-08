@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>emitter base usage</title>
-        <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-6/esl.js"></script>
+        <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
     </head>
     <body>
         <p>please view source &amp; console's output.</p>
@@ -18,7 +18,7 @@
             ]
         });
         require( [ 'saber-emitter' ], function( Emitter ) {
-            var emitter = new Emitter;
+            var emitter = new Emitter();
 
             function greeting( name ) {
                 console.log( 'Hello, ' + name + '!' );

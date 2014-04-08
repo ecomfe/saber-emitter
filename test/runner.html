@@ -7,13 +7,12 @@
 
     <link rel="stylesheet" type="text/css" href="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.css">
 
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
     <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine.js"></script>
     <script src="http://saberlabs.github.io/static/jasmine/2.0.0/jasmine-html.js"></script>
     <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console.js"></script>
-    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/boot.js"></script>
-    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/1-6-10/esl.js"></script>
-
-    <script src="consoleReporter.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/amd-boot.js"></script>
+    <script src="http://saberlabs.github.io/static/jasmine/2.0.0/console-reporter.js"></script>
 </head>
 <body>
     <script>
@@ -27,7 +26,16 @@
         ]
     });
 
-    require(['emitter.spec']);
+    require(
+        [
+            'boot',
+            'emitter.spec',
+            'aspect.spec'
+        ],
+        function ( boot ) {
+            boot();
+        }
+    );
     </script>
 </body>
 </html>
