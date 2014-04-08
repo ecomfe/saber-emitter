@@ -110,6 +110,32 @@ emitter.setMaxListeners( 8 );
 
 提供了 `AOP` 支持的事件发射器。
 
+它的使用方式与 `Emitter` 相同，只是在 `emit` 增加了对 `:before`、`:after` 事件的支持。
+
+注：在事件 `on`、`off`、`once` 时，带 `:before`/`:after` 的事件与普通事件无区分，均需手工管理。
+
+```javascript
+var AspectEmitter = require('saber-emitter/aspect');
+
+var emitter = new AspectEmitter();
+
+// 绑定 before、after 事件
+emitter.on('foo', doSomething);
+emitter.on('foo:before', doSomething);
+emitter.on('foo:after', doSomething);
+
+emitter.emit('foo');
+// => 按 foo:before, foo, foo:after 顺序触发
+
+emitter.emit('foo:before');
+// => 单独触发 foo:before 事件
+
+// 手工解绑事件
+emitter.off('foo');
+emitter.off('foo:before');
+emitter.off('foo:after');
+```
+
 Browser Support
 ---
 
