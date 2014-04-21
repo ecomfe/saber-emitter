@@ -27,9 +27,7 @@ require( [ 'saber-emitter' ], function( Emitter ) {
 API
 ---
 
-### Emitter
-
-#### new Emitter
+### new Emitter
 
 创建`Emitter`实例。
 
@@ -37,7 +35,7 @@ API
 var emitter = new Emitter();
 ```
 
-#### Emitter.mixin( obj )
+### Emitter.mixin( obj )
 
 通过`mixin`将`Emitter`混入目标对象。
 
@@ -48,7 +46,7 @@ Emitter.mixin( obj );
 obj.emit( 'foo' );
 ```
 
-#### Emitter#on( event, listener )
+### Emitter#on( event, listener )
 
 挂载事件。
 
@@ -59,7 +57,7 @@ function listenerFn( name ) {
 emitter.on( 'say', listenerFn );
 ```
 
-#### Emitter#once( event, listener )
+### Emitter#once( event, listener )
 
 挂载只执行一次的事件。
 
@@ -67,7 +65,7 @@ emitter.on( 'say', listenerFn );
 emitter.once( 'say', listenerFn );
 ```
 
-#### Emitter#off( event, listener )
+### Emitter#off( event, listener )
 
 注销事件与监听器。
 
@@ -81,7 +79,7 @@ emitter.off( 'say' );
 emitter.off( 'say', listenerFn );
 ```
 
-#### Emitter#emit( event, args... )
+### Emitter#emit( event, args... )
 
 触发事件。
 
@@ -90,7 +88,7 @@ emitter.emit( 'say' );
 emitter.emit( 'say', 'hello' );
 ```
 
-#### Emitter#listeners( event )
+### Emitter#listeners( event )
 
 返回指定事件的监听器列表。
 
@@ -98,42 +96,12 @@ emitter.emit( 'say', 'hello' );
 var listeners = emitter.listeners( 'say' );
 ```
 
-#### Emitter#setMaxListeners( number )
+### Emitter#setMaxListeners( number )
 
 设置每个事件下，监听器的最大个数。为 `0` 时不限制，默认值是 `10` 。
 
 ```javascript
 emitter.setMaxListeners( 8 );
-```
-
-### AspectEmitter
-
-提供了 `AOP` 支持的事件发射器。
-
-它的使用方式与 `Emitter` 相同，只是在 `emit` 增加了对 `:before`、`:after` 事件的支持。
-
-注：在事件 `on`、`off`、`once` 时，带 `:before`/`:after` 的事件与普通事件无区分，均需手工管理。
-
-```javascript
-var AspectEmitter = require('saber-emitter/aspect');
-
-var emitter = new AspectEmitter();
-
-// 绑定 before、after 事件
-emitter.on('foo', doSomething);
-emitter.on('foo:before', doSomething);
-emitter.on('foo:after', doSomething);
-
-emitter.emit('foo');
-// => 按 foo:before, foo, foo:after 顺序触发
-
-emitter.emit('foo:before');
-// => 单独触发 foo:before 事件
-
-// 手工解绑事件
-emitter.off('foo');
-emitter.off('foo:before');
-emitter.off('foo:after');
 ```
 
 Browser Support
