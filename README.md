@@ -13,14 +13,14 @@ Usage
 简单使用示例：
 
 ```javascript
-require( [ 'saber-emitter' ], function( Emitter ) {
+require(['saber-emitter'], function(Emitter) {
     var emitter = new Emitter();
 
-    emitter.on( 'greeting', function( name ) {
-        console.log( 'Hello, ' + name + '!' );
+    emitter.on('greeting', function(name) {
+        console.log('Hello, ' + name + '!');
     });
 
-    emitter.emit( 'greeting', 'Firede' );
+    emitter.emit('greeting', 'Firede');
 });
 ```
 
@@ -35,37 +35,37 @@ API
 var emitter = new Emitter();
 ```
 
-### Emitter.mixin( obj )
+### Emitter.mixin(obj)
 
 通过`mixin`将`Emitter`混入目标对象。
 
 ```javascript
 var obj = {};
-Emitter.mixin( obj );
+Emitter.mixin(obj);
 
-obj.emit( 'foo' );
+obj.emit('foo');
 ```
 
-### Emitter#on( event, listener )
+### Emitter#on(event, listener)
 
 挂载事件。
 
 ```javascript
-function listenerFn( name ) {
-    console.log( 'Hello ' + name );
+function listenerFn(name) {
+    console.log('Hello ' + name);
 }
-emitter.on( 'say', listenerFn );
+emitter.on('say', listenerFn);
 ```
 
-### Emitter#once( event, listener )
+### Emitter#once(event, listener)
 
 挂载只执行一次的事件。
 
 ```javascript
-emitter.once( 'say', listenerFn );
+emitter.once('say', listenerFn);
 ```
 
-### Emitter#off( event, listener )
+### Emitter#off(event, listener)
 
 注销事件与监听器。
 
@@ -75,33 +75,33 @@ emitter.once( 'say', listenerFn );
 
 ```javascript
 emitter.off();
-emitter.off( 'say' );
-emitter.off( 'say', listenerFn );
+emitter.off('say');
+emitter.off('say', listenerFn);
 ```
 
-### Emitter#emit( event, args... )
+### Emitter#emit(event, args...)
 
 触发事件。
 
 ```javascript
-emitter.emit( 'say' );
-emitter.emit( 'say', 'hello' );
+emitter.emit('say');
+emitter.emit('say', 'hello');
 ```
 
-### Emitter#listeners( event )
+### Emitter#listeners(event)
 
 返回指定事件的监听器列表。
 
 ```javascript
-var listeners = emitter.listeners( 'say' );
+var listeners = emitter.listeners('say');
 ```
 
-### Emitter#setMaxListeners( number )
+### Emitter#setMaxListeners(number)
 
 设置每个事件下，监听器的最大个数。为 `0` 时不限制，默认值是 `10` 。
 
 ```javascript
-emitter.setMaxListeners( 8 );
+emitter.setMaxListeners(8);
 ```
 
 Browser Support

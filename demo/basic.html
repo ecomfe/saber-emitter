@@ -17,33 +17,33 @@
                 }
             ]
         });
-        require( [ 'saber-emitter' ], function( Emitter ) {
+        require(['saber-emitter'], function(Emitter) {
             var emitter = new Emitter();
 
-            function greeting( name ) {
-                console.log( 'Hello, ' + name + '!' );
+            function greeting(name) {
+                console.log('Hello, ' + name + '!');
             }
 
             // add listener
-            emitter.on( 'greeting', greeting);
+            emitter.on('greeting', greeting);
 
             // output: Hello, Firede!
-            emitter.emit( 'greeting', 'Firede' );
+            emitter.emit('greeting', 'Firede');
 
             // remove listener
-            emitter.off( 'greeting' );
+            emitter.off('greeting');
 
-            // do nothing ( listener has been removed )
-            emitter.emit( 'greeting', 'World' );
+            // do nothing (listener has been removed)
+            emitter.emit('greeting', 'World');
 
             // add listener just emit once
-            emitter.once( 'hi', greeting );
+            emitter.once('hi', greeting);
 
             // output: Hello, EcomFE!
-            emitter.emit( 'hi', 'EcomFE' );
+            emitter.emit('hi', 'EcomFE');
 
-            // do nothing ( listener has been removed )
-            emitter.emit( 'hi', 'World' );
+            // do nothing (listener has been removed)
+            emitter.emit('hi', 'World');
         });
         </script>
     </body>

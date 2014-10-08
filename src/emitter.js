@@ -3,7 +3,7 @@
  * @author  Firede[firede@firede.us]
  */
 
-define( function() {
+define(function() {
 
     /**
      * Emitter
@@ -28,7 +28,7 @@ define( function() {
      * @return {Object}
      */
     proto._getEvents = function() {
-        if ( !this._events ) {
+        if (!this._events) {
             this._events = {};
         }
 
@@ -43,7 +43,7 @@ define( function() {
      * @return {number}
      */
     proto._getMaxListeners = function() {
-        if ( isNaN(this.maxListeners) ) {
+        if (isNaN(this.maxListeners)) {
             this.maxListeners = 10;
         }
 
@@ -58,22 +58,22 @@ define( function() {
      * @param {Function} listener 监听器
      * @return {Emitter}
      */
-    proto.on = function( event, listener ) {
+    proto.on = function(event, listener) {
         var events = this._getEvents();
         var maxListeners = this._getMaxListeners();
         
         events[ event ] = events[ event ] || [];
 
         var currentListeners = events[ event ].length;
-        if ( currentListeners >= maxListeners && maxListeners !== 0 ) {
+        if (currentListeners >= maxListeners && maxListeners !== 0) {
             throw new RangeError(
                 'Warning: possible Emitter memory leak detected. '
                 + currentListeners
                 + ' listeners added.'
-            );
+           );
         }
 
-        events[ event ].push( listener );
+        events[ event ].push(listener);
 
         return this;
     };
@@ -86,17 +86,17 @@ define( function() {
      * @param {Function} listener 监听器
      * @return {Emitter}
      */
-    proto.once = function( event, listener ) {
+    proto.once = function(event, listener) {
         var me = this;
 
         function on() {
-            me.off( event, on );
-            listener.apply( this, arguments );
+            me.off(event, on);
+            listener.apply(this, arguments);
         }
         // 挂到on上以方便删除
         on.listener = listener;
 
-        this.on( event, on );
+        this.on(event, on);
 
         return this;
     };
@@ -112,31 +112,31 @@ define( function() {
      * @param {Function} listener 监听器
      * @return {Emitter}
      */
-    proto.off = function( event, listener ) {
+    proto.off = function(event, listener) {
         var events = this._getEvents();
 
         // 移除所有事件
-        if ( 0 === arguments.length ) {
+        if (0 === arguments.length) {
             this._events = {};
             return this;
         }
 
         var listeners = events[ event ];
-        if ( !listeners ) {
+        if (!listeners) {
             return this;
         }
 
         // 移除指定事件下的所有监听器
-        if ( 1 === arguments.length ) {
+        if (1 === arguments.length) {
             delete events[ event ];
             return this;
         }
 
         // 移除指定监听器（包括对once的处理）
         var cb;
-        for ( var i = 0; i < listeners.length; i++ ) {
+        for (var i = 0; i < listeners.length; i++) {
             cb = listeners[ i ];
-            if ( cb === listener || cb.listener === listener ) {
+            if (cb === listener || cb.listener === listener) {
                 listeners.splice(i, 1);
                 break;
             }
@@ -149,18 +149,18 @@ define( function() {
      * 
      * @public
      * @param {string} event 事件名
-     * @param {...*} 传递给监听器的参数，可以有多个
+     * @param {...*} args 传递给监听器的参数，可以有多个
      * @return {Emitter}
      */
-    proto.emit = function( event ) {
+    proto.emit = function(event) {
         var events = this._getEvents();
         var listeners = events[ event ];
-        var args = Array.prototype.slice.call( arguments, 1 );
+        var args = Array.prototype.slice.call(arguments, 1);
 
-        if ( listeners ) {
-            listeners = listeners.slice( 0 );
-            for ( var i = 0, len = listeners.length; i < len; i++ ) {
-                listeners[ i ].apply( this, args );
+        if (listeners) {
+            listeners = listeners.slice(0);
+            for (var i = 0, len = listeners.length; i < len; i++) {
+                listeners[ i ].apply(this, args);
             }
         }
 
@@ -174,7 +174,7 @@ define( function() {
      * @param {string} event 事件名
      * @return {Array} 监听器列表
      */
-    proto.listeners = function( event ) {
+    proto.listeners = function(event) {
         var events = this._getEvents();
         return events[ event ] || [];
     };
@@ -185,7 +185,7 @@ define( function() {
      * @param {number} number 监听器个数
      * @return {Emitter}
      */
-    proto.setMaxListeners = function( number ) {
+    proto.setMaxListeners = function(number) {
         this.maxListeners = number;
 
         return this;
@@ -197,8 +197,8 @@ define( function() {
      * @param {Object} obj 目标对象
      * @return {Object} 混入Emitter后的对象
      */
-    Emitter.mixin = function( obj ) {
-        for ( var key in Emitter.prototype ) {
+    Emitter.mixin = function(obj) {
+        for (var key in Emitter.prototype) {
             obj[ key ] = Emitter.prototype[ key ];
         }
         return obj;
