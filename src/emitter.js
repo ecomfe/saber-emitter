@@ -108,8 +108,8 @@ define(function () {
      * 传入`event`与`listener`将只注销该监听器
      *
      * @public
-     * @param {string} event 事件名
-     * @param {Function} listener 监听器
+     * @param {string=} event 事件名
+     * @param {Function=} listener 监听器
      * @return {Emitter}
      */
     proto.off = function (event, listener) {
