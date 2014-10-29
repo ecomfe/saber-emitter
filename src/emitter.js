@@ -3,11 +3,11 @@
  * @author  Firede[firede@firede.us]
  */
 
-define(function() {
+define(function () {
 
     /**
      * Emitter
-     * 
+     *
      * @exports Emitter
      * @constructor
      */
@@ -15,7 +15,7 @@ define(function() {
 
     /**
      * Emitter的prototype（为了便于访问）
-     * 
+     *
      * @inner
      */
     var proto = Emitter.prototype;
@@ -23,11 +23,11 @@ define(function() {
     /**
      * 获取事件列表
      * 若还没有任何事件则初始化列表
-     * 
+     *
      * @private
      * @return {Object}
      */
-    proto._getEvents = function() {
+    proto._getEvents = function () {
         if (!this._events) {
             this._events = {};
         }
@@ -38,11 +38,11 @@ define(function() {
     /**
      * 获取最大监听器个数
      * 若尚未设置，则初始化最大个数为10
-     * 
+     *
      * @private
      * @return {number}
      */
-    proto._getMaxListeners = function() {
+    proto._getMaxListeners = function () {
         if (isNaN(this.maxListeners)) {
             this.maxListeners = 10;
         }
@@ -52,16 +52,16 @@ define(function() {
 
     /**
      * 挂载事件
-     * 
+     *
      * @public
      * @param {string} event 事件名
      * @param {Function} listener 监听器
      * @return {Emitter}
      */
-    proto.on = function(event, listener) {
+    proto.on = function (event, listener) {
         var events = this._getEvents();
         var maxListeners = this._getMaxListeners();
-        
+
         events[ event ] = events[ event ] || [];
 
         var currentListeners = events[ event ].length;
@@ -80,13 +80,13 @@ define(function() {
 
     /**
      * 挂载只执行一次的事件
-     * 
+     *
      * @public
      * @param {string} event 事件名
      * @param {Function} listener 监听器
      * @return {Emitter}
      */
-    proto.once = function(event, listener) {
+    proto.once = function (event, listener) {
         var me = this;
 
         function on() {
@@ -106,13 +106,13 @@ define(function() {
      * 任何参数都`不传`将注销当前实例的所有事件
      * 只传入`event`将注销该事件下挂载的所有监听器
      * 传入`event`与`listener`将只注销该监听器
-     * 
+     *
      * @public
      * @param {string} event 事件名
      * @param {Function} listener 监听器
      * @return {Emitter}
      */
-    proto.off = function(event, listener) {
+    proto.off = function (event, listener) {
         var events = this._getEvents();
 
         // 移除所有事件
@@ -146,13 +146,13 @@ define(function() {
 
     /**
      * 触发事件
-     * 
+     *
      * @public
      * @param {string} event 事件名
      * @param {...*} args 传递给监听器的参数，可以有多个
      * @return {Emitter}
      */
-    proto.emit = function(event) {
+    proto.emit = function (event) {
         var events = this._getEvents();
         var listeners = events[ event ];
         var args = Array.prototype.slice.call(arguments, 1);
@@ -169,23 +169,23 @@ define(function() {
 
     /**
      * 返回指定事件的监听器列表
-     * 
+     *
      * @public
      * @param {string} event 事件名
      * @return {Array} 监听器列表
      */
-    proto.listeners = function(event) {
+    proto.listeners = function (event) {
         var events = this._getEvents();
         return events[ event ] || [];
     };
 
     /**
      * 设置监听器的最大个数，为0时不限制
-     * 
+     *
      * @param {number} number 监听器个数
      * @return {Emitter}
      */
-    proto.setMaxListeners = function(number) {
+    proto.setMaxListeners = function (number) {
         this.maxListeners = number;
 
         return this;
@@ -193,11 +193,11 @@ define(function() {
 
     /**
      * 将Emitter混入目标对象
-     * 
+     *
      * @param {Object} obj 目标对象
      * @return {Object} 混入Emitter后的对象
      */
-    Emitter.mixin = function(obj) {
+    Emitter.mixin = function (obj) {
         for (var key in Emitter.prototype) {
             obj[ key ] = Emitter.prototype[ key ];
         }
