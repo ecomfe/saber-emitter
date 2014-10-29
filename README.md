@@ -29,6 +29,8 @@ require(['saber-emitter'], function(Emitter) {
 
 创建 `Emitter` 实例
 
+* _return_ `{Emitter}`
+
 ```js
 var Emitter = require('saber-emitter');
 var emitter = new Emitter();
