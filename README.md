@@ -83,17 +83,18 @@ emitter.once('say', listenerFn);
 
 注销事件与监听器
 
-* `不传参数` 将注销当前实例的所有事件
-* 只传入 `event` 将注销该事件下挂载的所有监听器
-* 传入 `event` 与 `listener` 将只注销该监听器
-
 * **event** `{string=}` 事件名
 * **listener** `{Function=}` 监听器
 * _return_ `{Emitter}`
 
 ```js
+// `不传参数` 将注销当前实例的所有事件
 emitter.off();
+
+// 只传入 `event` 将注销该事件下挂载的所有监听器
 emitter.off('say');
+
+// 传入 `event` 与 `listener` 将只注销该监听器
 emitter.off('say', listenerFn);
 ```
 
