@@ -1,21 +1,21 @@
 // use `component/emitter` test case:
 // https://github.com/component/emitter/blob/master/test/emitter.js
 
-define(function() {
+define(function () {
     var Emitter = require('saber-emitter');
 
-    describe('Custom', function() {
+    describe('Custom', function () {
         function Custom() {
             Emitter.call(this);
         }
         Emitter.mixin(Custom.prototype);
 
-        describe('with Emitter.call(this)', function() {
-            it('should work', function() {
+        describe('with Emitter.call(this)', function () {
+            it('should work', function () {
                 var emitter = new Custom();
                 var done = false;
 
-                emitter.on('foo', function() {
+                emitter.on('foo', function () {
                     done = true;
                 });
                 emitter.emit('foo');
@@ -25,18 +25,18 @@ define(function() {
         });
     });
 
-    describe('Emitter', function() {
+    describe('Emitter', function () {
 
-        describe('.on(event, listener)', function() {
-            it('should add listeners', function() {
+        describe('.on(event, listener)', function () {
+            it('should add listeners', function () {
                 var emitter = new Emitter();
                 var result = [];
 
-                emitter.on('foo', function(value) {
+                emitter.on('foo', function (value) {
                     result.push('one', value);
                 });
 
-                emitter.on('foo', function(value) {
+                emitter.on('foo', function (value) {
                     result.push('two', value);
                 });
 
@@ -49,20 +49,20 @@ define(function() {
                );
             });
 
-            it('.setMaxListeners(number)', function() {
+            it('.setMaxListeners(number)', function () {
                 var done = false;
                 var emitter = new Emitter();
                 emitter.setMaxListeners(2);
 
-                emitter.on('baz', function() {
+                emitter.on('baz', function () {
                     console.log('a');
                 });
-                emitter.on('baz', function() {
+                emitter.on('baz', function () {
                     console.log('b');
                 });
 
                 try {
-                    emitter.on('baz', function() {
+                    emitter.on('baz', function () {
                         console.log('c');
                     });
                 }
@@ -77,12 +77,12 @@ define(function() {
 
         });
 
-        describe('.once(event, listener)', function() {
-            it('should add a single-shot listener', function() {
+        describe('.once(event, listener)', function () {
+            it('should add a single-shot listener', function () {
                 var emitter = new Emitter();
                 var result = [];
 
-                emitter.once('foo', function(value){
+                emitter.once('foo', function (value){
                     result.push('one', value);
                 });
 
@@ -95,8 +95,8 @@ define(function() {
             });
         });
 
-        describe('.off(event, listener)', function() {
-            it('should remove a listener', function() {
+        describe('.off(event, listener)', function () {
+            it('should remove a listener', function () {
                 var emitter = new Emitter();
                 var result = [];
 
@@ -117,7 +117,7 @@ define(function() {
                 expect(result).toEqual([ 'one' ]);
             });
 
-            it('should work with .once()', function() {
+            it('should work with .once()', function () {
                 var emitter = new Emitter();
                 var result = [];
 
@@ -134,7 +134,7 @@ define(function() {
                 expect(result).toEqual([]);
             });
 
-            it('should work when called from an event', function() {
+            it('should work when called from an event', function () {
                 var emitter = new Emitter();
                 var called;
 
@@ -158,8 +158,8 @@ define(function() {
             });
         });
 
-        describe('.off(event)', function() {
-            it('should remove all listeners for an event', function() {
+        describe('.off(event)', function () {
+            it('should remove all listeners for an event', function () {
                 var emitter = new Emitter();
                 var result = [];
 
@@ -181,8 +181,8 @@ define(function() {
             });
         });
 
-        describe('.off()', function() {
-            it('should remove all listeners', function() {
+        describe('.off()', function () {
+            it('should remove all listeners', function () {
                 var emitter = new Emitter();
                 var result = [];
 
@@ -208,9 +208,9 @@ define(function() {
             });
         });
 
-        describe('.listeners(event)', function() {
-            describe('when handlers are present', function() {
-                it('should return an array of callbacks', function() {
+        describe('.listeners(event)', function () {
+            describe('when handlers are present', function () {
+                it('should return an array of callbacks', function () {
                     var emitter = new Emitter();
                     function foo() {}
                     emitter.on('foo', foo);
@@ -219,10 +219,10 @@ define(function() {
                 });
             });
 
-            describe('when no handlers are present', function() {
-                it('should return an empty array', function() {
+            describe('when no handlers are present', function () {
+                it('should return an empty array', function () {
                     var emitter = new Emitter();
-                    
+
                     expect(emitter.listeners('foo')).toEqual([]);
                 });
             });
@@ -230,13 +230,13 @@ define(function() {
 
     });
 
-    describe('Emitter.mixin(obj)', function() {
-        it('should mixin', function() {
+    describe('Emitter.mixin(obj)', function () {
+        it('should mixin', function () {
             var done = false;
             var emitter = {};
             Emitter.mixin(emitter);
 
-            emitter.on('foo', function() {
+            emitter.on('foo', function () {
                 done = true;
             });
             emitter.emit('foo');
