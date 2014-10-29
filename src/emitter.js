@@ -62,9 +62,9 @@ define(function () {
         var events = this._getEvents();
         var maxListeners = this._getMaxListeners();
 
-        events[ event ] = events[ event ] || [];
+        events[event] = events[event] || [];
 
-        var currentListeners = events[ event ].length;
+        var currentListeners = events[event].length;
         if (currentListeners >= maxListeners && maxListeners !== 0) {
             throw new RangeError(
                 'Warning: possible Emitter memory leak detected. '
@@ -73,7 +73,7 @@ define(function () {
            );
         }
 
-        events[ event ].push(listener);
+        events[event].push(listener);
 
         return this;
     };
@@ -121,21 +121,21 @@ define(function () {
             return this;
         }
 
-        var listeners = events[ event ];
+        var listeners = events[event];
         if (!listeners) {
             return this;
         }
 
         // 移除指定事件下的所有监听器
         if (1 === arguments.length) {
-            delete events[ event ];
+            delete events[event];
             return this;
         }
 
         // 移除指定监听器（包括对once的处理）
         var cb;
         for (var i = 0; i < listeners.length; i++) {
-            cb = listeners[ i ];
+            cb = listeners[i];
             if (cb === listener || cb.listener === listener) {
                 listeners.splice(i, 1);
                 break;
@@ -154,13 +154,13 @@ define(function () {
      */
     proto.emit = function (event) {
         var events = this._getEvents();
-        var listeners = events[ event ];
+        var listeners = events[event];
         var args = Array.prototype.slice.call(arguments, 1);
 
         if (listeners) {
             listeners = listeners.slice(0);
             for (var i = 0, len = listeners.length; i < len; i++) {
-                listeners[ i ].apply(this, args);
+                listeners[i].apply(this, args);
             }
         }
 
@@ -176,7 +176,7 @@ define(function () {
      */
     proto.listeners = function (event) {
         var events = this._getEvents();
-        return events[ event ] || [];
+        return events[event] || [];
     };
 
     /**
@@ -199,7 +199,7 @@ define(function () {
      */
     Emitter.mixin = function (obj) {
         for (var key in Emitter.prototype) {
-            obj[ key ] = Emitter.prototype[ key ];
+            obj[key] = Emitter.prototype[key];
         }
         return obj;
     };
