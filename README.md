@@ -3,116 +3,135 @@ saber-emitter [![Build Status](https://travis-ci.org/ecomfe/saber-emitter.png)](
 
 一个适用于移动端的事件发射器。
 
-Usage
----
+## Installation
 
-通过`edp`引入模块：
+通过 [edp](https://github.com/ecomfe/edp) 引入模块：
 
-    edp import saber-emitter
+```sh
+edp import saber-emitter
+```
 
-简单使用示例：
+## Usage
 
-```javascript
-require( [ 'saber-emitter' ], function( Emitter ) {
+```js
+require(['saber-emitter'], function(Emitter) {
     var emitter = new Emitter();
 
-    emitter.on( 'greeting', function( name ) {
-        console.log( 'Hello, ' + name + '!' );
+    emitter.on('greeting', function(name) {
+        console.log('Hello, ' + name + '!');
     });
 
-    emitter.emit( 'greeting', 'Firede' );
+    emitter.emit('greeting', 'Firede');
 });
 ```
 
-API
----
+## API
 
-### new Emitter
+创建 `Emitter` 实例
 
-创建`Emitter`实例。
+* _return_ `{Emitter}`
 
-```javascript
+```js
+var Emitter = require('saber-emitter');
 var emitter = new Emitter();
 ```
 
-### Emitter.mixin( obj )
+### Methods
 
-通过`mixin`将`Emitter`混入目标对象。
+#### mixin(obj)
 
-```javascript
+通过 `mixin` 将 `Emitter` 混入目标对象
+
+* **obj** `{Object}` 目标对象
+* _return_ `{Object}` 混入 Emitter 后的目标对象
+
+```js
 var obj = {};
-Emitter.mixin( obj );
+Emitter.mixin(obj);
 
-obj.emit( 'foo' );
+obj.emit('foo');
 ```
 
-### Emitter#on( event, listener )
+### Classes
 
-挂载事件。
+#### on(event, listener)
 
-```javascript
-function listenerFn( name ) {
-    console.log( 'Hello ' + name );
+挂载事件
+
+* **event** `{string}` 事件名
+* **listener** `{Function}` 监听器
+* _return_ `{Emitter}`
+
+```js
+function listenerFn(name) {
+    console.log('Hello ' + name);
 }
-emitter.on( 'say', listenerFn );
+emitter.on('say', listenerFn);
 ```
 
-### Emitter#once( event, listener )
+#### once(event, listener)
 
-挂载只执行一次的事件。
+挂载只执行一次的事件
 
-```javascript
-emitter.once( 'say', listenerFn );
+* **event** `{string}` 事件名
+* **listener** `{Function}` 监听器
+* _return_ `{Emitter}`
+
+```js
+emitter.once('say', listenerFn);
 ```
 
-### Emitter#off( event, listener )
+#### off([event[, listener]])
 
-注销事件与监听器。
+注销事件与监听器
 
-* 任何参数都`不传`将注销当前实例的所有事件
-* 只传入`event`将注销该事件下挂载的所有监听器
-* 传入`event`与`listener`将只注销该监听器
+* **event** `{string=}` 事件名
+* **listener** `{Function=}` 监听器
+* _return_ `{Emitter}`
 
-```javascript
+```js
+// `不传参数` 将注销当前实例的所有事件
 emitter.off();
-emitter.off( 'say' );
-emitter.off( 'say', listenerFn );
+
+// 只传入 `event` 将注销该事件下挂载的所有监听器
+emitter.off('say');
+
+// 传入 `event` 与 `listener` 将只注销该监听器
+emitter.off('say', listenerFn);
 ```
 
-### Emitter#emit( event, args... )
+#### emit(event[, ...args])
 
-触发事件。
+触发事件
 
-```javascript
-emitter.emit( 'say' );
-emitter.emit( 'say', 'hello' );
+* **event** `{string}` 事件名
+* **args** `{...*}` 传递给监听器的参数，可以有多个
+* _return_ `{Emitter}`
+
+```js
+emitter.emit('say');
+emitter.emit('say', 'hello');
+emitter.emit('say', 'hello', 'world');
 ```
 
-### Emitter#listeners( event )
+#### listeners(event)
 
-返回指定事件的监听器列表。
+返回指定事件的监听器列表
 
-```javascript
-var listeners = emitter.listeners( 'say' );
+* **event** `{string}` 事件名
+* _return_ `{Array}` 监听器列表
+
+```js
+var listeners = emitter.listeners('say');
 ```
 
-### Emitter#setMaxListeners( number )
+#### setMaxListeners(number)
 
-设置每个事件下，监听器的最大个数。为 `0` 时不限制，默认值是 `10` 。
+设置每个事件下，监听器的最大个数。为 `0` 时不限制，默认值是 `10`
 
-```javascript
-emitter.setMaxListeners( 8 );
+* **number** `{number}` 监听器个数
+* _return_ `{Emitter}`
+
+```js
+emitter.setMaxListeners(8);
 ```
-
-Browser Support
----
-
-已测试通过的浏览器：
-
-* iOS Safari: 5.0, 5.1, 6.0, 6.1, 7.0
-* Android Browser: 2.2, 2.3.3, 4.1
-* IE Mobile: 10
-
-===
-
-[![Saber](https://f.cloud.github.com/assets/157338/1485433/aeb5c72a-4714-11e3-87ae-7ef8ae66e605.png)](http://ecomfe.github.io/saber/)
