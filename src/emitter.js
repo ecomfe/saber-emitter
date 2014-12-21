@@ -1,6 +1,6 @@
 /**
  * @file  Event Emitter
- * @author  Firede[firede@firede.us]
+ * @author  Firede(firede@firede.us)
  */
 
 define(function () {
