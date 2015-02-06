@@ -209,7 +209,9 @@
         exports = module.exports = Emitter;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(Emitter);
+        define(function () {
+            return Emitter;
+        });
     }
 
 })();
