@@ -3,7 +3,7 @@
  * @author  Firede(firede@firede.us)
  */
 
-define(function () {
+(function () {
 
     /**
      * Emitter
@@ -204,6 +204,12 @@ define(function () {
         return obj;
     };
 
-    return Emitter;
+    // Export
+    if (typeof exports === 'object' && typeof module === 'object') {
+        exports = module.exports = Emitter;
+    }
+    else if (typeof define === 'function' && define.amd) {
+        define(Emitter);
+    }
 
-});
+})();
