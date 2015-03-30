@@ -155,11 +155,15 @@
     proto.emit = function (event) {
         var events = this._getEvents();
         var listeners = events[event];
-        var args = Array.prototype.slice.call(arguments, 1);
+        // 内联arguments的转化 提升性能
+        var args = [];
+        for (var i = 1; i < arguments.length; i++) {
+            args.push(arguments[i]);
+        }
 
         if (listeners) {
             listeners = listeners.slice(0);
-            for (var i = 0, len = listeners.length; i < len; i++) {
+            for (i = 0; i < listeners.length; i++) {
                 listeners[i].apply(this, args);
             }
         }
@@ -191,6 +195,8 @@
         return this;
     };
 
+    var protoKeys = Object.keys(proto);
+
     /**
      * 将Emitter混入目标对象
      *
@@ -198,8 +204,11 @@
      * @return {Object} 混入Emitter后的对象
      */
     Emitter.mixin = function (obj) {
-        for (var key in Emitter.prototype) {
-            obj[key] = Emitter.prototype[key];
+        // forIn不利于V8的优化
+        var key;
+        for (var i = 0, max = protoKeys.length; i < max; i++) {
+            key = protoKeys[i];
+            obj[key] = proto[key];
         }
         return obj;
     };
