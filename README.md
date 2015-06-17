@@ -1,5 +1,7 @@
-saber-emitter [![Build Status](https://travis-ci.org/ecomfe/saber-emitter.png)](https://travis-ci.org/ecomfe/saber-emitter)
+saber-emitter
 ===
+
+![Bower version](https://img.shields.io/bower/v/saber-emitter.svg?style=flat-square) [![Build Status](https://img.shields.io/travis/ecomfe/saber-emitter/1.0/develop.svg?style=flat-square)](https://travis-ci.org/ecomfe/saber-emitter) [![License](https://img.shields.io/npm/l/saber-emitter.svg?style=flat-square)](./LICENSE) [![EFE Mobile Team](https://img.shields.io/badge/EFE-Mobile_Team-blue.svg?style=flat-square)](http://efe.baidu.com)
 
 一个适用于移动端的事件发射器。
 
