@@ -1,7 +1,7 @@
 {
   "name": "saber-emitter",
-  "version": "1.0.0",
-  "description": "一个适用于移动端的事件发射器。",
+  "version": "2.0.0",
+  "description": "一个适用于移动端的事件发射器，兼容node环境",
   "main": "emitter",
   "maintainers": [
     {
@@ -13,6 +13,10 @@
     {
       "name": "zfkun",
       "email": "zfkun@msn.com"
+    },
+    {
+      "name": "treelite",
+      "email": "c.xinle@gmail.com"
     }
   ],
   "devDependencies": {

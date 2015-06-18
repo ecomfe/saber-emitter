@@ -1,14 +1,22 @@
-saber-emitter [![Build Status](https://travis-ci.org/ecomfe/saber-emitter.png)](https://travis-ci.org/ecomfe/saber-emitter)
+saber-emitter
 ===
 
-一个适用于移动端的事件发射器。
+![Bower version](https://img.shields.io/bower/v/saber-emitter.svg?style=flat-square) [![NPM version](https://img.shields.io/npm/v/saber-emitter.svg?style=flat-square)](https://npmjs.org/package/saber-emitter) [![Build Status](https://img.shields.io/travis/ecomfe/saber-emitter.svg?style=flat-square)](https://travis-ci.org/ecomfe/saber-emitter) [![License](https://img.shields.io/npm/l/saber-emitter.svg?style=flat-square)](./LICENSE) [![EFE Mobile Team](https://img.shields.io/badge/EFE-Mobile_Team-blue.svg?style=flat-square)](http://efe.baidu.com)
+
+一个适用于移动端的事件发射器，兼容 node 环境。
 
 ## Installation
 
 通过 [edp](https://github.com/ecomfe/edp) 引入模块：
 
 ```sh
-edp import saber-emitter
+$ edp import saber-emitter
+```
+
+或者在 node 环境下 使用 `npm` 引入模块：
+
+```sh
+$ npm install saber-emitter --save
 ```
 
 ## Usage

@@ -1,7 +1,12 @@
+/**
+ * @file test
+ * @author Firede(firede@firede.us)
+ */
+
 // use `component/emitter` test case:
 // https://github.com/component/emitter/blob/master/test/emitter.js
 
-define(function () {
+define(function (require) {
     var Emitter = require('saber-emitter');
 
     describe('Custom', function () {
@@ -45,7 +50,7 @@ define(function () {
                 emitter.emit('bar', 2);
 
                 expect(result).toEqual(
-                    [ 'one', 'test', 'two', 'test', 'one', 1, 'two', 1 ]
+                    ['one', 'test', 'two', 'test', 'one', 1, 'two', 1]
                );
             });
 
@@ -82,7 +87,7 @@ define(function () {
                 var emitter = new Emitter();
                 var result = [];
 
-                emitter.once('foo', function (value){
+                emitter.once('foo', function (value) {
                     result.push('one', value);
                 });
 
@@ -91,7 +96,7 @@ define(function () {
                 emitter.emit('foo', 3);
                 emitter.emit('bar', 1);
 
-                expect(result).toEqual([ 'one', 1 ]);
+                expect(result).toEqual(['one', 1]);
             });
         });
 
@@ -114,7 +119,7 @@ define(function () {
 
                 emitter.emit('foo');
 
-                expect(result).toEqual([ 'one' ]);
+                expect(result).toEqual(['one']);
             });
 
             it('should work with .once()', function () {
@@ -215,7 +220,7 @@ define(function () {
                     function foo() {}
                     emitter.on('foo', foo);
 
-                    expect(emitter.listeners('foo')).toEqual([ foo ]);
+                    expect(emitter.listeners('foo')).toEqual([foo]);
                 });
             });
 
